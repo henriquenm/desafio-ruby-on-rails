@@ -1,0 +1,6 @@
+<%= form_with(url: {action: :import}, multipart: true) do %>
+  <%= label_tag :import_file, "Upload CNAB" %>
+  <%= file_field_tag :import_file %>
+
+  <%= submit_tag "Importar CNAB" %>
+<% end %>
