@@ -6,8 +6,10 @@ class CnabReader
   end
 
   def process_file
-    File.open(@cnab).each do |line|
-      parse_line(line)
+    if @cnab.present?
+      File.open(@cnab).each do |line|
+        parse_line(line)
+      end
     end
   end
 

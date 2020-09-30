@@ -1,49 +1,48 @@
-require 'spec_helper'
+# frozen_string_literal: true
 
-describe Transaction do
-  describe '#validations' do
-    it 'presence of date_and_time' do
-      record = Transaction.new
-      record.date_and_time = nil
-      record.valid?
-      expect(record.errors[:date_and_time]).to include("can't be blank")
+require 'rails_helper'
 
-      record.date_and_time = '2019-03-01 10:00:00'
-      record.valid?
-      expect(record.errors[:date_and_time]).to_not include("can't be blank")
-    end
+RSpec.describe Transaction, type: :model do
+  subject { described_class.new(date_and_time: DateTime.now,
+                                value: 123.45,
+                                card: '1234****6678',
+                                cpf: '556.418.150-63',
+                                transaction_type: TransactionType.new,
+                                store: Store.new
+                              )
+  }
 
-    it 'presence of value' do
-      record = Transaction.new
-      record.value = nil
-      record.valid?
-      expect(record.errors[:value]).to include("can't be blank")
+  it 'is valid with valid attributes' do
+    expect(subject).to be_valid
+  end
 
-      record.value = 140.32
-      record.valid?
-      expect(record.errors[:value]).to_not include("can't be blank")
-    end
+  it 'is not valid without a date_and_time' do
+    subject.date_and_time = nil
+    expect(subject).to_not be_valid
+  end
 
-    it 'presence of card' do
-      record = Transaction.new
-      record.card = nil
-      record.valid?
-      expect(record.errors[:card]).to include("can't be blank")
+  it 'is not valid without a value' do
+    subject.value = nil
+    expect(subject).to_not be_valid
+  end
 
-      record.card = '1234****6678'
-      record.valid?
-      expect(record.errors[:card]).to_not include("can't be blank")
-    end
+  it 'is not valid without a card' do
+    subject.card = nil
+    expect(subject).to_not be_valid
+  end
 
-    it 'presence of cpf' do
-      record = Transaction.new
-      record.cpf = nil
-      record.valid?
-      expect(record.errors[:cpf]).to include("can't be blank")
+  it 'is not valid without a cpf' do
+    subject.cpf = nil
+    expect(subject).to_not be_valid
+  end
 
-      record.cpf = '556.418.150-63'
-      record.valid?
-      expect(record.errors[:cpf]).to_not include("can't be blank")
-    end
+  it 'is not valid without a transaction_type' do
+    subject.transaction_type = nil
+    expect(subject).to_not be_valid
+  end
+
+  it 'is not valid without a store' do
+    subject.store = nil
+    expect(subject).to_not be_valid
   end
 end
