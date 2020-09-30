@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class TransactionType < ActiveRecord::Base
   has_many :transactions
 

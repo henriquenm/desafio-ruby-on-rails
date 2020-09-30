@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CnabReader
 
   def initialize(cnab_file)
@@ -17,7 +19,7 @@ class CnabReader
     cpf = formatted_cpf(line.slice(19..29))
     card = line.slice(30..41)
     store_owner = line.slice(48..61).strip
-    store_name = line.slice(62..80).strip.gsub("\n", "")
+    store_name = line.slice(62..80).strip.gsub('\n', '')
 
     store_params = {
       name: store_name,
@@ -66,5 +68,4 @@ class CnabReader
   def create_transaction(params)
     Transaction.create!(params)
   end
-
 end
