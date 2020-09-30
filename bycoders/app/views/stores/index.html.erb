@@ -6,7 +6,7 @@
           <%= link_to store_path(store) do %>
             <%= store.name %><br>
             <%= store.owner_name %><br>
-            <%= store.cpf %><br>
+            <%= display_currency(store.balance) %><br>
           <% end %>
         </div>
       <% end %>

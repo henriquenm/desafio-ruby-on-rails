@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2020_09_29_143852) do
   create_table "stores", force: :cascade do |t|
     t.string "name", null: false
     t.string "owner_name", null: false
-    t.string "cpf", null: false
+    t.decimal "balance", default: "0.0"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -36,8 +36,9 @@ ActiveRecord::Schema.define(version: 2020_09_29_143852) do
     t.datetime "date_and_time", null: false
     t.decimal "value", null: false
     t.string "card", null: false
-    t.bigint "store_id"
-    t.bigint "transaction_type_id"
+    t.string "cpf", null: false
+    t.bigint "store_id", null: false
+    t.bigint "transaction_type_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["store_id"], name: "index_transactions_on_store_id"

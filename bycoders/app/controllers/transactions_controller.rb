@@ -6,6 +6,8 @@ class TransactionsController < ApplicationController
 
   def import
     cnab_file = params[:import_file]
-    file_reader = Transaction.read_cnab(cnab_file)
+    file_reader = CnabReader.new(cnab_file).process_file
+
+    redirect_to stores_path
   end
 end

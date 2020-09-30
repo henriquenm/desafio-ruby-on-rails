@@ -1,7 +1,5 @@
 class TransactionType < ActiveRecord::Base
   has_many :transactions
 
-  def self.find_by_code(code)
-    find_by(type_code: code)
-  end
+  validates_presence_of :type_code, :description, :nature, :signal
 end

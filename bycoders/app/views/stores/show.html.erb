@@ -6,8 +6,9 @@
   <%= transaction_type.signal %><br>
   <%= transaction_type.nature %><br>
   <%= transaction_type.description %><br>
-  <%= transaction.value %><br>
+  <%= display_currency(transaction.value) %><br>
   <%= transaction.card %><br>
+  <%= transaction.cpf %><br>
   <%= "Data e Hora: #{transaction.date_and_time.strftime('%d/%m/%Y %H:%M:%S')}" %><br>
   <br><br>
 <% end %>
