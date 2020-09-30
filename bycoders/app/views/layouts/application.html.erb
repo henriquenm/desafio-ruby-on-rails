@@ -6,15 +6,14 @@
 <!--[if gt IE 9]><html lang="<%= I18n.locale %>"><![endif]-->
 <html>
   <head>
-    <title>Bycoders</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= render partial: 'shared/head' %>
   </head>
 
   <body>
-    <%= yield %>
+    <%= render partial: 'shared/header' %>
+    <div class="container">
+      <%= yield %>
+    </div>
+    <%= render partial: 'shared/footer' %>
   </body>
 </html>

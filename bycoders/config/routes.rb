@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  root 'welcome#index'
+
+  resources :stores, only: [:index, :show]
   resources :transactions do
     collection do
       get :new_import

@@ -13,3 +13,12 @@
  *= require_tree .
  *= require_self
  */
+
+@import "main/fonts";
+@import "main/general";
+@import "main/header";
+@import "main/footer";
+
+@import 'sections/welcome';
+@import 'sections/import';
+@import 'sections/stores';

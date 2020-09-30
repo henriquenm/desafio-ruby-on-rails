@@ -1,4 +1,3 @@
-# -*- encoding : utf-8 -*-
 namespace :populate do
 
   task :transaction_type => :environment do
