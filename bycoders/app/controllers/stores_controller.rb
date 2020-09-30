@@ -13,7 +13,7 @@ class StoresController < ApplicationController
 
   private
 
-    def find_store
-      @store = Store.find(params[:id]) if params[:id]
-    end
+  def find_store
+    @store = Store.find(params[:id]) if params[:id]
+  end
 end

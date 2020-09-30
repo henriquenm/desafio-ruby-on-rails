@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class CnabReader
-
   def initialize(cnab_file)
     @cnab = cnab_file
   end
@@ -44,15 +43,15 @@ class CnabReader
   end
 
   def formatted_datetime(date, time)
-    DateTime.parse(date+time).strftime("%d/%m/%Y %H:%M:%S")
+    DateTime.parse(date + time).strftime('%d/%m/%Y %H:%M:%S')
   end
 
   def formatted_value(value)
-    value.to_f/100
+    value.to_f / 100
   end
 
   def formatted_cpf(cpf)
-    "#{cpf[0,3]}.#{cpf[3,3]}.#{cpf[6,3]}-#{cpf[9,2]}"
+    "#{cpf[0, 3]}.#{cpf[3, 3]}.#{cpf[6, 3]}-#{cpf[9, 2]}"
   end
 
   def create_store(params)

@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 namespace :populate do
-
   task transaction_type: :environment do
     print_with_timestamp 'Starting process'
 
@@ -30,5 +29,4 @@ namespace :populate do
   def self.print_with_timestamp(msg)
     puts "[#{Time.zone.now.strftime('%Y-%m-%d %H:%M:%S')}] #{msg}"
   end
-
 end
