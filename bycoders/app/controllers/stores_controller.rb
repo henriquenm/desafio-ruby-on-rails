@@ -6,7 +6,7 @@ class StoresController < ApplicationController
   end
 
   def show
-    @transactions = @store.transactions
+    @transactions = @store.transactions.order(date_and_time: :desc)
   end
 
   private
