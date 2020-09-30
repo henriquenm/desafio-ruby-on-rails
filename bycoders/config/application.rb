@@ -10,6 +10,10 @@ Bundler.require(*Rails.groups)
 
 module Bycoders
   class Application < Rails::Application
+    config.autoload_paths += ["#{Rails.root}/lib"]
+    %w(app/models lib).each do |directory|
+      Dir.glob("#{Rails.root}/#{directory}/*.rb").each {|file| load file}
+    end
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
 
