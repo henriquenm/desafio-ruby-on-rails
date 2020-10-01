@@ -1,24 +1,90 @@
-# README
+# Desafio Ruby on Rails - ByCoders CNAB Reader by Henrique
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This application aims to process a CNAB file and save the information correctly in the database.
 
-Things you may want to cover:
+## Requirements
+  - Ruby 2.5.1
+  - Rails 6.0.3
+  - Postgres
 
-* Ruby version
+## Getting started
 
-* System dependencies
+First of all, you need to clone the project into your local machine and enter in the project's folder.
 
-* Configuration
+```bash
+git clone git@github.com:henriquenm/desafio-ruby-on-rails.git
+cd desafio-ruby-on-rails/bycoders-cnab-reader
+```
 
-* Database creation
+Now, run bundler to install all project's gems and dependencies.
 
-* Database initialization
+```bash
+bundle install
+```
 
-* How to run the test suite
+If neccessary run the following command to update your Yarn packages.
 
-* Services (job queues, cache servers, search engines, etc.)
+```bash
+yarn install --check-files
+```
 
-* Deployment instructions
+Configure the 'database.yml' to create database. Example above
 
-* ...
+```yml
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
+
+development:
+  <<: *default
+  database: bycoders_development
+
+test:
+  <<: *default
+  database: bycoders_test
+```
+
+After database configuration file is created, run the following commands to create database and run migrations.
+
+```bash
+rake db:create
+rake db:migrate
+```
+
+Run the command below to create all Transaction Types.
+
+```bash
+rake populate:transaction_type
+```
+
+And it's done! Run the rails server to test it on http://localhost:3000/
+
+```bash
+rails s
+```
+
+## API
+
+You can import CNAB file and consult records through API.
+
+```bash
+curl http://localhost:3000/api/v1/stores #return stores
+curl http://localhost:3000/api/v1/stores/:id #return store transactions
+curl -F 'import_file=@path/to/CNAB.txt' http://localhost:3000/api/v1/transactions/import #import CNAB file and return stores
+```
+
+## Running Tests
+
+You can run rspec tests by typing
+
+```bash
+rspec
+```
+
+And see coverage with simplecov
+
+```bash
+open coverage/index.html
+```
