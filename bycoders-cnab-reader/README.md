@@ -22,13 +22,13 @@ Now, run bundler to install all project's gems and dependencies.
 bundle install
 ```
 
-If neccessary run the following command to update your Yarn packages.
+If necessary run the following command to update your Yarn packages.
 
 ```bash
 yarn install --check-files
 ```
 
-Configure the 'database.yml' to create database. Example above
+Configure the 'database.yml' to create database. Example:
 
 ```yml
 default: &default
